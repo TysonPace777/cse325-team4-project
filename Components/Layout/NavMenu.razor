@@ -1,13 +1,14 @@
 ﻿<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">cse325-team4-project</a>
+        <a class="navbar-brand" href="">Travel Assistance</a>
     </div>
 </div>
 
 <input type="checkbox" title="Navigation menu" class="navbar-toggler" />
 
 <div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
-    <nav class="nav flex-column">
+    <nav class="flex-column">
+
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
                 <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
@@ -15,16 +16,34 @@
         </div>
 
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
+            <NavLink class="nav-link" href="discover">
+                <span class="bi bi-search-nav-menu" aria-hidden="true"></span> Discover
             </NavLink>
         </div>
 
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="weather">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
+            <NavLink class="nav-link" href="destinations">
+                <span class="bi bi-map-nav-menu" aria-hidden="true"></span> Destinations
             </NavLink>
         </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="activities">
+                <span class="bi bi-calendar-event-nav-menu" aria-hidden="true"></span> Activities
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="feedback">
+                <span class="bi bi-chat-left-text-nav-menu" aria-hidden="true"></span> Feedback
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="signin">
+                <span class="bi bi-person-fill-nav-menu" aria-hidden="true"></span> Sign In
+            </NavLink>
+        </div>
+
     </nav>
 </div>
-

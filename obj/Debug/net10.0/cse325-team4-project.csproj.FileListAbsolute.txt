@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 D:\COURS\BYU BATHWAY\cse325-team4-project\bin\Debug\net10.0\appsettings.Development.json
 D:\COURS\BYU BATHWAY\cse325-team4-project\bin\Debug\net10.0\appsettings.json
 D:\COURS\BYU BATHWAY\cse325-team4-project\bin\Debug\net10.0\cse325-team4-project.staticwebassets.runtime.json
@@ -96,3 +97,91 @@ D:\COURS\BYU BATHWAY\cse325-team4-project\obj\Debug\net10.0\refint\cse325-team4-
 D:\COURS\BYU BATHWAY\cse325-team4-project\obj\Debug\net10.0\cse325-team4-project.pdb
 D:\COURS\BYU BATHWAY\cse325-team4-project\obj\Debug\net10.0\cse325-team4-project.genruntimeconfig.cache
 D:\COURS\BYU BATHWAY\cse325-team4-project\obj\Debug\net10.0\ref\cse325-team4-project.dll
+=======
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\bin\Debug\net10.0\appsettings.Development.json
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\bin\Debug\net10.0\appsettings.json
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\bin\Debug\net10.0\cse325-team4-project.staticwebassets.runtime.json
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\bin\Debug\net10.0\cse325-team4-project.staticwebassets.endpoints.json
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\bin\Debug\net10.0\cse325-team4-project.exe
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\bin\Debug\net10.0\cse325-team4-project.deps.json
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\bin\Debug\net10.0\cse325-team4-project.runtimeconfig.json
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\bin\Debug\net10.0\cse325-team4-project.dll
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\bin\Debug\net10.0\cse325-team4-project.pdb
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\EmbeddedAttribute.cs
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\ValidatableTypeAttribute.cs
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\cse325-team4-project.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\cse325-team4-project.AssemblyInfoInputs.cache
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\cse325-team4-project.AssemblyInfo.cs
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\cse325-team4-project.csproj.CoreCompileInputs.cache
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\cse325-team4-project.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\cse325-team4-project.sourcelink.json
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\rjimswa.dswa.cache.json
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\scopedcss\Components\Layout\MainLayout.razor.rz.scp.css
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\scopedcss\Components\Layout\NavMenu.razor.rz.scp.css
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\scopedcss\Components\Layout\ReconnectModal.razor.rz.scp.css
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\scopedcss\bundle\cse325-team4-project.styles.css
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\scopedcss\projectbundle\cse325-team4-project.bundle.scp.css
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\7qzuznjgtu-{0}-khy4lop6wu-khy4lop6wu.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\v9yvg38g1x-{0}-bqjiyaj88i-bqjiyaj88i.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\u8m1hwzibf-{0}-c2jlpeoesf-c2jlpeoesf.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\qgr3sk4kns-{0}-erw9l3u2r3-erw9l3u2r3.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\mxrhy1zlmg-{0}-aexeepp0ev-aexeepp0ev.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\1cvkg45pfw-{0}-d7shbmvgxk-d7shbmvgxk.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\gkw8rgnet8-{0}-ausgxo2sd3-ausgxo2sd3.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\oxre8906ov-{0}-k8d9w2qqmf-k8d9w2qqmf.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\xiqtetnn9i-{0}-cosvhxvwiu-cosvhxvwiu.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\f85mpw6bx6-{0}-ub07r2b239-ub07r2b239.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\n5pvm1c21x-{0}-fvhpjtyr6v-fvhpjtyr6v.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\c6ow8szlea-{0}-b7pk76d08c-b7pk76d08c.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\c9vvd7s88h-{0}-fsbi9cje9m-fsbi9cje9m.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\rt1rhnd3w4-{0}-rzd6atqjts-rzd6atqjts.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\6u72mcjwxi-{0}-ee0r1s7dh0-ee0r1s7dh0.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\5x24cbu2f6-{0}-dxx9fxp4il-dxx9fxp4il.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\9h1yhyx5cn-{0}-jd9uben2k1-jd9uben2k1.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\fpsq1kuruv-{0}-khv3u5hwcm-khv3u5hwcm.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\hpkkjqn7n1-{0}-r4e9w2rdcm-r4e9w2rdcm.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\10dq40djvd-{0}-lcd1t2u6c8-lcd1t2u6c8.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\68etvv79ns-{0}-c2oey78nd0-c2oey78nd0.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\7ae9mdy5xg-{0}-tdbxkamptv-tdbxkamptv.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\seckpbzjkw-{0}-j5mq2jizvt-j5mq2jizvt.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\vtb08gj8s4-{0}-06098lyss8-06098lyss8.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\ijb6lhzg07-{0}-nvvlpmu67g-nvvlpmu67g.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\1o3uoqy0vj-{0}-s35ty4nyc5-s35ty4nyc5.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\lkuhtbitq2-{0}-pj5nd1wqec-pj5nd1wqec.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\3o5w806nnl-{0}-46ein0sx1k-46ein0sx1k.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\i8q6nqp1r7-{0}-v0zj4ognzu-v0zj4ognzu.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\vekrca4f4z-{0}-37tfw0ft22-37tfw0ft22.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\oxyrcatjna-{0}-hrwsygsryq-hrwsygsryq.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\gjnwdi4ytr-{0}-pk9g2wxc8p-pk9g2wxc8p.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\0f5uzk88lk-{0}-ft3s53vfgj-ft3s53vfgj.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\zdda18t84s-{0}-6cfz1n2cew-6cfz1n2cew.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\q9jtu17tot-{0}-6pdc2jztkx-6pdc2jztkx.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\z92fdl5l8o-{0}-493y06b0oq-493y06b0oq.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\r9kkvtkdvj-{0}-iovd86k7lj-iovd86k7lj.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\pjjsplxt3p-{0}-vr1egmr9el-vr1egmr9el.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\wvzq9vz0x0-{0}-kbrnm935zg-kbrnm935zg.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\58p5g17azx-{0}-jj8uyg4cgr-jj8uyg4cgr.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\3u3jh8hc3g-{0}-y7v9cxd14o-y7v9cxd14o.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\sukjb07w39-{0}-notf2xhcfb-notf2xhcfb.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\v3h9unpa73-{0}-h1s4sie4z3-h1s4sie4z3.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\06b21cndt8-{0}-63fj8s7r0e-63fj8s7r0e.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\yv5xhyx6gq-{0}-0j3bgjxly4-0j3bgjxly4.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\dcde0dwggp-{0}-abdmv1u4y3-abdmv1u4y3.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\8ltqj8ucl0-{0}-hwaxidwiwj-hwaxidwiwj.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\k5jzi1yyvl-{0}-xbbil6v7co-xbbil6v7co.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\g9swmlzx1r-{0}-ct7xe5cexu-ct7xe5cexu.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\8zpq4re3ba-{0}-ct7xe5cexu-ct7xe5cexu.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\staticwebassets.build.json
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\staticwebassets.build.json.cache
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\staticwebassets.development.json
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\swae.build.ex.cache
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\cse325-team4-project.dll
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\refint\cse325-team4-project.dll
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\cse325-team4-project.pdb
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\cse325-team4-project.genruntimeconfig.cache
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\ref\cse325-team4-project.dll
+>>>>>>> 5b7dcb94a6ae37e4f6dfca5efbd38d75d61ebca0

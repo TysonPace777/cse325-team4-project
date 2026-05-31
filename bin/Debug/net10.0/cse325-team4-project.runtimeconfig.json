@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "runtimeOptions": {
     "tfm": "net10.0",
@@ -16,4 +17,25 @@
       "System.Runtime.Serialization.EnableUnsafeBinaryFormatterSerialization": false
     }
   }
+=======
+{
+  "runtimeOptions": {
+    "tfm": "net10.0",
+    "frameworks": [
+      {
+        "name": "Microsoft.NETCore.App",
+        "version": "10.0.0"
+      },
+      {
+        "name": "Microsoft.AspNetCore.App",
+        "version": "10.0.0"
+      }
+    ],
+    "configProperties": {
+      "System.GC.Server": true,
+      "System.Runtime.Serialization.EnableUnsafeBinaryFormatterSerialization": false,
+      "Microsoft.AspNetCore.Components.Endpoints.NavigationManager.DisableThrowNavigationException": true
+    }
+  }
+>>>>>>> 5b7dcb94a6ae37e4f6dfca5efbd38d75d61ebca0
 }

@@ -24,7 +24,6 @@ C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\scop
 C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\scopedcss\Components\Layout\ReconnectModal.razor.rz.scp.css
 C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\scopedcss\bundle\cse325-team4-project.styles.css
 C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\scopedcss\projectbundle\cse325-team4-project.bundle.scp.css
-C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\7qzuznjgtu-{0}-khy4lop6wu-khy4lop6wu.gz
 C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\v9yvg38g1x-{0}-bqjiyaj88i-bqjiyaj88i.gz
 C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\u8m1hwzibf-{0}-c2jlpeoesf-c2jlpeoesf.gz
 C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\qgr3sk4kns-{0}-erw9l3u2r3-erw9l3u2r3.gz
@@ -84,3 +83,5 @@ C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\refi
 C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\cse325-team4-project.pdb
 C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\cse325-team4-project.genruntimeconfig.cache
 C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\ref\cse325-team4-project.dll
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\xsi5323481-{0}-ypdjns99j0-ypdjns99j0.gz
+C:\Users\32tpa\Desktop\School\cse325\cse325-team4-project\obj\Debug\net10.0\compressed\7qzuznjgtu-{0}-wpt8m0q2ur-wpt8m0q2ur.gz

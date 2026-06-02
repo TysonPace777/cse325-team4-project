@@ -58,3 +58,62 @@ h1:focus {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
     text-align: start;
 }
+
+.home-title {
+    justify-self: center;
+    background-color: #387d7a;
+    color: white;
+    padding: 10px;
+    width: 60%;
+    text-align: center;
+}
+
+.home-filter {
+    justify-self: right;
+}
+
+.home-card-list {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    justify-self: center;
+}
+
+.home-card-list img {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+    padding: 15px;
+}
+
+.offer {
+    padding-top: 25px;
+    justify-self: center;
+}
+
+.offer-list {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    justify-self: center;
+    justify-content: center;
+}
+
+.offer-list li {
+    width: 40%;
+    padding: 20px;
+}
+
+@media (max-width: 700px) {
+    .home-card-list {
+        flex-direction: column;
+    }
+
+    .home-card-list img {
+        width: 200px;
+        height: 150px;
+    }
+}

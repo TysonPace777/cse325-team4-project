@@ -1,10 +1,13 @@
 using cse325_team4_project.Components;
+using cse325_team4_project.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services.AddScoped<DestinationService>();
 
 var app = builder.Build();
 

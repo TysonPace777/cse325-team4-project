@@ -1,0 +1,219 @@
+@page "/destinations/new"
+@using cse325_team4_project.Models
+@using cse325_team4_project.Services
+@using Microsoft.AspNetCore.Hosting
+@inject DestinationService DestinationService
+@inject NavigationManager NavigationManager
+@inject IWebHostEnvironment Env
+
+<PageTitle>Add Destination</PageTitle>
+
+<div class="add-destination-page">
+    <h1>Add New Destination</h1>
+
+    <EditForm Model="newDestination" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="form-grid">
+            <div class="form-field">
+                <label for="name">Name</label>
+                <InputText id="name" class="input-field" @bind-Value="newDestination.Name" />
+            </div>
+
+            <div class="form-field">
+                <label for="country">Country</label>
+                <InputText id="country" class="input-field" @bind-Value="newDestination.Country" />
+            </div>
+
+            <div class="form-field">
+                <label for="category">Category</label>
+                <InputText id="category" class="input-field" @bind-Value="newDestination.Category" />
+            </div>
+
+            <div class="form-field">
+                <label for="rating">Rating</label>
+                <InputNumber id="rating" class="input-field" @bind-Value="newDestination.Rating" step="0.1" min="0" max="5" />
+            </div>
+
+            <div class="form-field form-full-width">
+                <label for="bestTime">Best Time to Visit</label>
+                <InputText id="bestTime" class="input-field" @bind-Value="newDestination.BestTimeToVisit" />
+            </div>
+
+            <div class="form-field form-full-width">
+                <label for="description">Description</label>
+                <InputTextArea id="description" class="input-field" @bind-Value="newDestination.Description" rows="5" />
+            </div>
+
+            <div class="form-field form-full-width">
+                <label>Reference Photos</label>
+                <InputFile OnChange="OnInputFileChange" multiple />
+                @if (selectedFiles?.Count > 0)
+                {
+                    <div class="selected-files">
+                        <strong>Selected photos</strong>
+                        <ul>
+                            @foreach (var file in selectedFiles)
+                            {
+                                <li>@file.Name (@(file.Size / 1024) KB)</li>
+                            }
+                        </ul>
+                    </div>
+                }
+            </div>
+
+            <div class="form-actions form-full-width">
+                <button class="btn-primary" type="submit">Save Destination</button>
+                <button class="btn-secondary" type="button" @onclick="Cancel">Cancel</button>
+            </div>
+
+            @if (!string.IsNullOrEmpty(statusMessage))
+            {
+                <div class="form-status">@statusMessage</div>
+            }
+        </div>
+    </EditForm>
+</div>
+
+@code {
+    private readonly Destination newDestination = new()
+    {
+        Name = string.Empty,
+        Description = string.Empty,
+        Country = string.Empty,
+        Category = string.Empty,
+        BestTimeToVisit = string.Empty,
+        Rating = 0,
+        ImageUrls = new()
+    };
+    private IReadOnlyList<IBrowserFile>? selectedFiles;
+    private string statusMessage = string.Empty;
+
+    private async Task OnInputFileChange(InputFileChangeEventArgs e)
+    {
+        selectedFiles = e.GetMultipleFiles(5);
+        statusMessage = string.Empty;
+        await Task.CompletedTask;
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        if (selectedFiles == null || selectedFiles.Count == 0)
+        {
+            statusMessage = "Please upload at least one reference photo.";
+            return;
+        }
+
+        var uploadFolder = Path.Combine(Env.ContentRootPath, "wwwroot", "images", "uploads");
+        Directory.CreateDirectory(uploadFolder);
+
+        newDestination.ImageUrls.Clear();
+
+        foreach (var file in selectedFiles)
+        {
+            var safeName = Path.GetFileNameWithoutExtension(file.Name);
+            var extension = Path.GetExtension(file.Name);
+            var uniqueFileName = $"{safeName}-{Guid.NewGuid()}{extension}";
+            var filePath = Path.Combine(uploadFolder, uniqueFileName);
+
+            await using var fileStream = File.Create(filePath);
+            await file.OpenReadStream(maxAllowedSize: 10 * 1024 * 1024).CopyToAsync(fileStream);
+
+            newDestination.ImageUrls.Add($"/images/uploads/{uniqueFileName}");
+        }
+
+        await DestinationService.AddDestinationAsync(newDestination);
+        NavigationManager.NavigateTo("/destinations");
+    }
+
+    private void Cancel()
+    {
+        NavigationManager.NavigateTo("/destinations");
+    }
+}
+<style>
+    .add-destination-page {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .add-destination-page h1 {
+        margin-bottom: 1.5rem;
+        color: #333;
+    }
+
+    .form-grid {
+        display: grid;
+        gap: 1.25rem;
+    }
+
+    .form-field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .form-full-width {
+        grid-column: span 1;
+    }
+
+    .input-field {
+        padding: 0.85rem 1rem;
+        font-size: 1rem;
+        border: 2px solid #ddd;
+        border-radius: 10px;
+    }
+
+    .input-field:focus {
+        outline: none;
+        border-color: #007bff;
+    }
+
+    .form-actions {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        border: none;
+        padding: 0.95rem 1.6rem;
+        border-radius: 12px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .btn-primary {
+        background: #007bff;
+        color: white;
+    }
+
+    .btn-secondary {
+        background: #f1f1f1;
+        color: #333;
+    }
+
+    .btn-primary:hover {
+        background: #0056b3;
+    }
+
+    .btn-secondary:hover {
+        background: #e2e2e2;
+    }
+
+    .selected-files ul {
+        padding-left: 1.2rem;
+        margin: 0.5rem 0 0;
+        color: #444;
+    }
+
+    .form-status {
+        color: #d9534f;
+        font-weight: 600;
+    }
+</style>

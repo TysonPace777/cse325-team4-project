@@ -8,8 +8,13 @@
 <PageTitle>Destination Ideas</PageTitle>
 
 <div class="destinations-container">
-    <h1>Explore Destination Ideas</h1>
-    <p class="subtitle">Discover amazing places around the world based on images and categories</p>
+    <div class="destinations-header">
+        <div>
+            <h1>Explore Destination Ideas</h1>
+            <p class="subtitle">Discover amazing places around the world based on images and categories</p>
+        </div>
+        <button class="btn-add" @onclick="CreateDestination">Add Destination</button>
+    </div>
 
     <div class="filters-section">
         <div class="search-box">
@@ -43,13 +48,13 @@
                 <div class="destination-card">
                     <div class="destination-image">
                         <a class="destination-link" href="@($"/destinations/{destination.Id}")">
-                            @if (string.IsNullOrEmpty(destination.ImageUrl))
+                            @if (string.IsNullOrEmpty(destination.PreviewImageUrl))
                             {
                                 <div class="placeholder-image">No Image</div>
                             }
                             else
                             {
-                                <img src="@destination.ImageUrl" alt="@destination.Name" />
+                                <img src="@destination.PreviewImageUrl" alt="@destination.Name" />
                             }
                         </a>
                         <div class="category-badge">@destination.Category</div>
@@ -132,6 +137,11 @@
     {
         NavigationManager.NavigateTo($"/destinations/{destinationId}");
     }
+
+    private void CreateDestination()
+    {
+        NavigationManager.NavigateTo("/destinations/new");
+    }
 }
 
 <style>
@@ -141,14 +151,38 @@
         padding: 2rem;
     }
 
+    .destinations-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .btn-add {
+        background: #28a745;
+        color: white;
+        border: none;
+        border-radius: 12px;
+        padding: 0.9rem 1.4rem;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    .btn-add:hover {
+        background: #218838;
+    }
+
     h1 {
-        text-align: center;
+        text-align: left;
         margin-bottom: 0.5rem;
         color: #333;
     }
 
     .subtitle {
-        text-align: center;
+        text-align: left;
         color: #666;
         margin-bottom: 2rem;
         font-size: 1.1rem;

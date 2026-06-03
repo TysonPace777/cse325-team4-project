@@ -32,13 +32,21 @@ else
 
         <div class="details-content">
             <div class="details-image">
-                @if (string.IsNullOrEmpty(destination.ImageUrl))
+                @if (destination.ImageUrls == null || !destination.ImageUrls.Any())
                 {
                     <div class="placeholder-image">No Image</div>
                 }
                 else
                 {
-                    <img src="@destination.ImageUrl" alt="@destination.Name" />
+                    <div class="main-image">
+                        <img src="@activeImageUrl" alt="@destination.Name" />
+                    </div>
+                    <div class="thumbnail-row">
+                        @foreach (var imageUrl in destination.ImageUrls)
+                        {
+                            <img class="thumbnail @(imageUrl == activeImageUrl ? "active" : "")" src="@imageUrl" alt="@destination.Name" @onclick="() => SelectImage(imageUrl)" />
+                        }
+                    </div>
                 }
             </div>
 
@@ -71,12 +79,24 @@ else
     public int destinationId { get; set; }
 
     private Destination? destination;
+    private string activeImageUrl = string.Empty;
     private bool isLoading = true;
 
     protected override async Task OnParametersSetAsync()
     {
         destination = await DestinationService.GetDestinationByIdAsync(destinationId);
+
+        if (destination?.ImageUrls != null && destination.ImageUrls.Any())
+        {
+            activeImageUrl = destination.ImageUrls[0];
+        }
+
         isLoading = false;
+    }
+
+    private void SelectImage(string imageUrl)
+    {
+        activeImageUrl = imageUrl;
     }
 }
 
@@ -123,12 +143,44 @@ else
         align-items: start;
     }
 
+    .details-image {
+        display: grid;
+        gap: 1rem;
+    }
+
     .details-image img,
-    .placeholder-image {
+    .placeholder-image,
+    .details-image .main-image img {
         width: 100%;
         border-radius: 16px;
         max-height: 520px;
         object-fit: cover;
+    }
+
+    .thumbnail-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 0.75rem;
+    }
+
+    .thumbnail-row .thumbnail {
+        width: 100%;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 12px;
+        border: 2px solid #ddd;
+        cursor: pointer;
+        transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .thumbnail-row .thumbnail:hover {
+        transform: translateY(-2px);
+        border-color: #007bff;
+    }
+
+    .thumbnail-row .thumbnail.active {
+        border-color: #007bff;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
     }
 
     .placeholder-image {

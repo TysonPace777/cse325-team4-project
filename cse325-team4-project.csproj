@@ -7,6 +7,9 @@
     <RootNamespace>cse325_team4_project</RootNamespace>
     <AssemblyName>$(AssemblyName.Replace(' ', '_'))</AssemblyName>
     <BlazorDisableThrowNavigationException>true</BlazorDisableThrowNavigationException>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <UseAppHost>false</UseAppHost>
   </PropertyGroup>
 
 </Project>

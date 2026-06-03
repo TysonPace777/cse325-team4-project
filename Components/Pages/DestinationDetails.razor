@@ -1,0 +1,262 @@
+@page "/destinations/{destinationId:int}"
+@using cse325_team4_project.Models
+@using cse325_team4_project.Services
+@inject DestinationService DestinationService
+
+<PageTitle>Destination Details</PageTitle>
+
+@if (isLoading)
+{
+    <div class="details-loading">
+        <p>Loading destination details...</p>
+    </div>
+}
+else if (destination == null)
+{
+    <div class="details-not-found">
+        <h2>Destination not found</h2>
+        <p>We could not find the destination you are looking for.</p>
+        <a class="btn-explore" href="/destinations">Back to destinations</a>
+    </div>
+}
+else
+{
+    <div class="details-page">
+        <div class="details-header">
+            <a class="btn-back" href="/destinations">← Back</a>
+            <div>
+                <h1>@destination.Name</h1>
+                <p class="details-category">@destination.Category · @destination.Country</p>
+            </div>
+        </div>
+
+        <div class="details-content">
+            <div class="details-image">
+                @if (destination.ImageUrls == null || !destination.ImageUrls.Any())
+                {
+                    <div class="placeholder-image">No Image</div>
+                }
+                else
+                {
+                    <div class="main-image">
+                        <img src="@activeImageUrl" alt="@destination.Name" />
+                    </div>
+                    <div class="thumbnail-row">
+                        @foreach (var imageUrl in destination.ImageUrls)
+                        {
+                            <img class="thumbnail @(imageUrl == activeImageUrl ? "active" : "")" src="@imageUrl" alt="@destination.Name" @onclick="() => SelectImage(imageUrl)" />
+                        }
+                    </div>
+                }
+            </div>
+
+            <div class="details-info">
+                <p class="details-description">@destination.Description</p>
+
+                <div class="details-metadata">
+                    <div>
+                        <strong>Rating</strong>
+                        <div>⭐ @destination.Rating.ToString("F1")</div>
+                    </div>
+                    <div>
+                        <strong>Best Time to Visit</strong>
+                        <div>@destination.BestTimeToVisit</div>
+                    </div>
+                    <div>
+                        <strong>Category</strong>
+                        <div>@destination.Category</div>
+                    </div>
+                </div>
+
+                <a class="btn-explore" href="/destinations">Browse more destinations</a>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public int destinationId { get; set; }
+
+    private Destination? destination;
+    private string activeImageUrl = string.Empty;
+    private bool isLoading = true;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        destination = await DestinationService.GetDestinationByIdAsync(destinationId);
+
+        if (destination?.ImageUrls != null && destination.ImageUrls.Any())
+        {
+            activeImageUrl = destination.ImageUrls[0];
+        }
+
+        isLoading = false;
+    }
+
+    private void SelectImage(string imageUrl)
+    {
+        activeImageUrl = imageUrl;
+    }
+}
+
+<style>
+    .details-page {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .details-header {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .btn-back {
+        border: 2px solid #007bff;
+        background: white;
+        color: #007bff;
+        border-radius: 8px;
+        padding: 0.75rem 1rem;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .details-header h1 {
+        margin: 0;
+        font-size: 2rem;
+        color: #333;
+    }
+
+    .details-category {
+        margin: 0.5rem 0 0;
+        color: #666;
+        font-size: 1rem;
+    }
+
+    .details-content {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 2rem;
+        align-items: start;
+    }
+
+    .details-image {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .details-image img,
+    .placeholder-image,
+    .details-image .main-image img {
+        width: 100%;
+        border-radius: 16px;
+        max-height: 520px;
+        object-fit: cover;
+    }
+
+    .thumbnail-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 0.75rem;
+    }
+
+    .thumbnail-row .thumbnail {
+        width: 100%;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 12px;
+        border: 2px solid #ddd;
+        cursor: pointer;
+        transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .thumbnail-row .thumbnail:hover {
+        transform: translateY(-2px);
+        border-color: #007bff;
+    }
+
+    .thumbnail-row .thumbnail.active {
+        border-color: #007bff;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+    }
+
+    .placeholder-image {
+        height: 320px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #e0e0e0;
+        color: #999;
+        font-size: 1rem;
+    }
+
+    .details-info {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .details-description {
+        font-size: 1.05rem;
+        color: #444;
+        line-height: 1.7;
+    }
+
+    .details-metadata {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .details-metadata div {
+        padding: 1.25rem;
+        border-radius: 14px;
+        background: #f6f8ff;
+        color: #333;
+    }
+
+    .details-metadata strong {
+        display: block;
+        margin-bottom: 0.75rem;
+        color: #555;
+    }
+
+    .btn-explore {
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 0.9rem 1.5rem;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: bold;
+        width: fit-content;
+        transition: background 0.3s;
+    }
+
+    .btn-explore:hover {
+        background: #0056b3;
+    }
+
+    .details-loading,
+    .details-not-found {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 3rem;
+        text-align: center;
+        color: #555;
+    }
+
+    .details-not-found h2 {
+        margin-bottom: 1rem;
+    }
+
+    @@media (max-width: 900px) {
+        .details-content {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

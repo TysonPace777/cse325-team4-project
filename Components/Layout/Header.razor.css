@@ -1,0 +1,93 @@
+/* NavHeader.razor.css */
+
+.nav-header {
+  width: 100%;
+  border-bottom: 0.5px solid #e5e7eb;
+  background: #fff;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0 1.5rem;
+  height: 56px;
+}
+
+.logo {
+  font-size: 15px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: auto;
+  color: #111;
+}
+
+.logo-icon {
+  font-size: 18px;
+  color: #378add;
+}
+
+.pill-nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.pill {
+  font-size: 12px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 0.5px solid #d1d5db;
+  color: #6b7280;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+
+.pill:hover {
+  background: #f3f4f6;
+  color: #111;
+}
+
+.pill.active {
+  background: #f3f4f6;
+  color: #111;
+  border-color: #9ca3af;
+}
+
+.pill i {
+  font-size: 14px;
+}
+
+.icon-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.icon-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.icon-btn:hover {
+  background: #f3f4f6;
+}
+
+.icon-btn i {
+  font-size: 18px;
+}

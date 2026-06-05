@@ -1,0 +1,51 @@
+@* NavHeader.razor *@
+
+<header class="nav-header">
+    <nav class="nav-inner">
+        <div class="logo">
+            <span class="logo-icon">✦</span>
+            Discover The World
+        </div>
+
+        <div class="pill-nav d-none d-md-flex">
+            @foreach (KeyValuePair<string, NavItemDef> item in _navItems)
+            {
+                <button class="pill @(ActivePage == item.Key ? "active" : "")" @onclick="() => SetActive(item.Key)">
+                    <i class="@item.Value.Icon"></i>
+                    @item.Value.Label
+                </button>
+            }
+        </div>
+
+        <div class="icon-actions">
+            <button class="icon-btn" title="Notifications" @onclick="OnNotificationsClick">
+                <i class="bi bi-bell"></i>
+            </button>
+            <button class="icon-btn" title="Profile" @onclick="OnProfileClick">
+                <i class="bi bi-person"></i>
+            </button>
+        </div>
+    </nav>
+</header>
+
+@code {
+    [Parameter] public string ActivePage { get; set; } = "home";
+    [Parameter] public EventCallback<string> ActivePageChanged { get; set; }
+    [Parameter] public EventCallback OnNotificationsClick { get; set; }
+    [Parameter] public EventCallback OnProfileClick { get; set; }
+
+    private record NavItemDef(string Label, string Icon);
+
+    private readonly Dictionary<string, NavItemDef> _navItems = new()
+    {
+        ["home"] = new("Home", "bi bi-home"),
+        ["discover"] = new("Discover", "bi bi-binoculars"),
+        ["trips"] = new("My trips", "bi bi-calendar"),
+    };
+
+    private async Task SetActive(string key)
+    {
+        ActivePage = key;
+        await ActivePageChanged.InvokeAsync(key);
+    }
+}

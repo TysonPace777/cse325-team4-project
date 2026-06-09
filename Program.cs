@@ -1,7 +1,24 @@
 using cse325_team4_project.Components;
 using cse325_team4_project.Services;
+using cse325_team4_project.Data;
+using cse325_team4_project.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Implement db context below once created
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlite("Data Source=app.db"));
+
+// asp.net user database model
+builder.Services
+    .AddIdentity<ApplicationUser, IdentityRole>()
+    .AddEntityFrameworkStores<AppDbContext>();
+
+// for premium features and signing in/out
+//app.UseAuthentication();
+//app.UseAuthorization();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()

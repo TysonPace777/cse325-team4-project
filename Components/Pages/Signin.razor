@@ -1,0 +1,50 @@
+@page "/Signin"
+@rendermode InteractiveServer
+@using Microsoft.AspNetCore.WebUtilities
+@using Microsoft.AspNetCore.Antiforgery
+@inject IAntiforgery Antiforgery
+@inject IHttpContextAccessor HttpContextAccessor
+
+@code {
+    [SupplyParameterFromQuery] public string? Error { get; set; }
+    [SupplyParameterFromQuery] public string? Mode { get; set; }
+
+    private bool isLogin = false;
+
+    protected override void OnInitialized()
+    {
+        // Stay on register/login tab if redirected back with an error
+        if (Mode == "login") isLogin = true;
+    }
+}
+
+@if (!string.IsNullOrEmpty(Error))
+{
+    <p style="color:red">@Uri.UnescapeDataString(Error)</p>
+}
+
+@if (isLogin)
+{
+    <form method="post" action="/Account/Login?handler=Login">
+        <input type="hidden" name="__RequestVerificationToken" 
+            value="@Antiforgery.GetAndStoreTokens(HttpContextAccessor.HttpContext!).RequestToken" />
+        <input type="hidden" name="returnUrl" value="/" />
+        <input name="email" placeholder="Email" />
+        <input type="password" name="password" placeholder="Password" />
+        <button type="submit">Login</button>
+    </form>
+    <a @onclick="() => isLogin = false" @onclick:preventDefault>Need an account?</a>
+}
+else
+{
+    <form method="post" action="/Account/Login?handler=Register">
+        <input type="hidden" name="__RequestVerificationToken" 
+            value="@Antiforgery.GetAndStoreTokens(HttpContextAccessor.HttpContext!).RequestToken" />
+        <input type="hidden" name="returnUrl" value="/" />
+        <input name="email" placeholder="Email" />
+        <input type="password" name="password" placeholder="Password" />
+        <input type="password" name="confirmPassword" placeholder="Confirm Password" />
+        <button type="submit">Register</button>
+    </form>
+    <a @onclick="() => isLogin = true" @onclick:preventDefault>Already have an account?</a>
+}

@@ -39,7 +39,7 @@ if (!app.Environment.IsDevelopment())
 var port = Environment.GetEnvironmentVariable("PORT") ?? "10000";
 app.Urls.Add($"http://*:{port}");
 
-app.UseStatusCodePagesWithReExecute("/not-found", createScopeForStatusCodePages: true);
+app.UseStatusCodePagesWithReExecute("/not-found");
 app.UseHttpsRedirection();
 
 app.UseAntiforgery();

@@ -243,3 +243,13 @@ h1:focus {
         width: 100%;
     }
 }
+
+.username {
+    justify-self: right;
+}
+
+.logout {
+    color: red;
+    border: none;
+    background-color: white;
+}

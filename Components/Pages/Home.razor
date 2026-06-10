@@ -2,9 +2,7 @@
 
 <PageTitle>Home</PageTitle>
 
-<h1>Travel Planner</h1>
-
-<h3 class="home-title">Go Anywhere!</h3>
+@*<h1>Travel Planner</h1>
 
 <div class="home-links">
     <a href="/Discover">Discover</a>
@@ -14,16 +12,63 @@
     <a href="/Feedback">Feedback</a>
     <a href="#">Sign In</a>
 </div>
+*@
+
+<h3 class="home-title">Where do you want to go?</h3>
+
 
 <ul class="home-card-list">
-    <li><img src="images/Bos-Nederland-Epe-e1719389547661.webp" alt="Forest"/></li>
-    <li><img src="images/tropical-beach-scene.webp" alt="Beach"/></li>
-    <li><img src="images/most-beautiful-mountains-in-america-grand-teton.webp" alt="Mountain"/></li>
+    <li>
+        <a class="home-category-card" href="/destinations/category/Historic">
+            <img src="images/kyoto.jpg" alt="Historic destinations" />
+            <span>Historic Cities</span>
+        </a>
+    </li>
+
+    <li>
+        <a class="home-category-card" href="/destinations/category/Beach">
+            <img src="images/tropical-beach-scene.webp" alt="Beach destinations" />
+            <span>Beach</span>
+        </a>
+    </li>
+
+    <li>
+        <a class="home-category-card" href="/destinations/category/Mountain">
+            <img src="images/most-beautiful-mountains-in-america-grand-teton.webp" alt="Mountain destinations" />
+            <span>Mountain</span>
+        </a>
+    </li>
+    <li>
+        <a class="home-category-card" href="/destinations/category/City">
+            <img src="images/paris.jpg" alt="City destinations" />
+            <span>City</span>
+        </a>
+    </li>
 </ul>
 
-<p class="offer">What We Offer</p>
+
+
+@*<p class="offer">What We Offer</p>
 
 <ul class="offer-list">
-    <li><p>Discover your next adventure with personalized travel planning made simple. Our app helps you explore top destinations, schedule events in your calendar, and find travel ideas tailored to your style and budget. From weekend getaways to international trips, you’ll have everything you need in one place.</p></li>
-    <li><p>Upgrade to Premium for exclusive features like advanced trip customization, curated recommendations, priority planning tools, and access to hidden gems and special travel deals. Whether you’re planning your first trip or your tenth, we make travel easier, smarter, and more exciting.</p></li>
-</ul>
+    <li>
+        <p>Discover your next adventure with personalized travel planning made simple. Our app helps you explore top
+            destinations, schedule events in your calendar, and find travel ideas tailored to your style and budget.
+            From weekend getaways to international trips, you’ll have everything you need in one place.</p>
+        </li>
+        <li>
+            <p>Upgrade to Premium for exclusive features like advanced trip customization, curated recommendations, priority
+                planning tools, and access to hidden gems and special travel deals. Whether you’re planning your first trip
+                or your tenth, we make travel easier, smarter, and more exciting.</p>
+            </li>
+        </ul>
+
+*@
+
+<section class="home-offer">
+    <h2>What We Offer</h2>
+    <p>
+        Find destination ideas, discover activities, and plan your next adventure from one place.
+    </p>
+</section>
+

@@ -1,8 +1,18 @@
 ﻿@page "/"
 
+@using Microsoft.AspNetCore.Components.Authorization
+
 <PageTitle>Home</PageTitle>
 
-@*<h1>Travel Planner</h1>
+<h1>Travel Planner</h1>
+
+<AuthorizeView>
+    <Authorized Context="auth">
+        <p class="username">Hello, @auth.User.Identity?.Name</p>
+    </Authorized>
+</AuthorizeView>
+
+<h3 class="home-title">Go Anywhere!</h3>
 
 <div class="home-links">
     <a href="/Discover">Discover</a>
@@ -10,7 +20,16 @@
     <a href="/Activities">Activities</a>
     <a href="/Calendar">Calendar</a>
     <a href="/Feedback">Feedback</a>
-    <a href="#">Sign In</a>
+    <AuthorizeView>
+        <Authorized Context="auth">
+            <form method="post" action="/Account/Login?handler=Logout">
+                <button class="logout" type="submit">Logout</button>
+            </form>
+        </Authorized>
+        <NotAuthorized Context="auth">
+            <a href="/Signin">Sign In</a>
+        </NotAuthorized>
+    </AuthorizeView>
 </div>
 *@
 

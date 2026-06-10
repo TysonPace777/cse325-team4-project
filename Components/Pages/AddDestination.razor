@@ -1,4 +1,5 @@
 @page "/destinations/new"
+@rendermode InteractiveServer
 @using cse325_team4_project.Models
 @using cse325_team4_project.Services
 @using Microsoft.AspNetCore.Hosting
@@ -11,7 +12,7 @@
 <div class="add-destination-page">
     <h1>Add New Destination</h1>
 
-    <EditForm Model="newDestination" OnValidSubmit="HandleValidSubmit">
+    <EditForm EditContext="editContext" OnSubmit="HandleSubmit">
         <DataAnnotationsValidator />
         <ValidationSummary />
 
@@ -19,46 +20,35 @@
             <div class="form-field">
                 <label for="name">Name</label>
                 <InputText id="name" class="input-field" @bind-Value="newDestination.Name" />
-            </div>
-
-            <div class="form-field">
-                <label for="country">Country</label>
-                <InputText id="country" class="input-field" @bind-Value="newDestination.Country" />
-            </div>
-
-            <div class="form-field">
-                <label for="category">Category</label>
-                <InputText id="category" class="input-field" @bind-Value="newDestination.Category" />
-            </div>
-
-            <div class="form-field">
-                <label for="rating">Rating</label>
-                <InputNumber id="rating" class="input-field" @bind-Value="newDestination.Rating" step="0.1" min="0" max="5" />
+                <ValidationMessage For="@(() => newDestination.Name)" />
             </div>
 
             <div class="form-field form-full-width">
-                <label for="bestTime">Best Time to Visit</label>
-                <InputText id="bestTime" class="input-field" @bind-Value="newDestination.BestTimeToVisit" />
+                <label for="activities">Activities</label>
+                <InputText id="activities" class="input-field" @bind-Value="newDestination.Activities" />
+                <ValidationMessage For="@(() => newDestination.Activities)" />
+            </div>
+
+            <div class="form-field">
+                <label for="price">Price</label>
+                <InputNumber id="price" class="input-field" @bind-Value="newDestination.Price" />
+                <ValidationMessage For="@(() => newDestination.Price)" />
             </div>
 
             <div class="form-field form-full-width">
                 <label for="description">Description</label>
                 <InputTextArea id="description" class="input-field" @bind-Value="newDestination.Description" rows="5" />
+                <ValidationMessage For="@(() => newDestination.Description)" />
             </div>
 
             <div class="form-field form-full-width">
-                <label>Reference Photos</label>
-                <InputFile OnChange="OnInputFileChange" multiple />
-                @if (selectedFiles?.Count > 0)
+                <label for="image">Destination Image</label>
+                <InputFile id="image" OnChange="OnInputFileChange" accept="image/*" />
+                @if (!string.IsNullOrWhiteSpace(selectedFileName))
                 {
                     <div class="selected-files">
-                        <strong>Selected photos</strong>
-                        <ul>
-                            @foreach (var file in selectedFiles)
-                            {
-                                <li>@file.Name (@(file.Size / 1024) KB)</li>
-                            }
-                        </ul>
+                        <strong>Selected image</strong>
+                        <div>@selectedFileName</div>
                     </div>
                 }
             </div>
@@ -81,47 +71,75 @@
     {
         Name = string.Empty,
         Description = string.Empty,
-        Country = string.Empty,
-        Category = string.Empty,
-        BestTimeToVisit = string.Empty,
-        Rating = 0,
-        ImageUrls = new()
+        ImageUrl = string.Empty,
+        Activities = string.Empty,
+        Price = 0m
     };
-    private IReadOnlyList<IBrowserFile>? selectedFiles;
+
+    private EditContext? editContext;
+    private ValidationMessageStore? validationMessageStore;
+    private IBrowserFile? selectedFile;
+    private string selectedFileName = string.Empty;
     private string statusMessage = string.Empty;
 
-    private async Task OnInputFileChange(InputFileChangeEventArgs e)
+    protected override void OnInitialized()
     {
-        selectedFiles = e.GetMultipleFiles(5);
-        statusMessage = string.Empty;
-        await Task.CompletedTask;
+        editContext = new EditContext(newDestination);
+        validationMessageStore = new ValidationMessageStore(editContext);
     }
 
-    private async Task HandleValidSubmit()
+    private Task OnInputFileChange(InputFileChangeEventArgs e)
     {
-        if (selectedFiles == null || selectedFiles.Count == 0)
+        selectedFile = e.File;
+        selectedFileName = e.File.Name;
+        statusMessage = string.Empty;
+
+        if (editContext != null && validationMessageStore != null)
         {
-            statusMessage = "Please upload at least one reference photo.";
+            validationMessageStore.Clear(new FieldIdentifier(newDestination, nameof(newDestination.ImageUrl)));
+            editContext.NotifyValidationStateChanged();
+        }
+
+        return Task.CompletedTask;
+    }
+
+    private async Task HandleSubmit()
+    {
+        if (editContext == null || validationMessageStore == null)
+        {
             return;
         }
 
-        var uploadFolder = Path.Combine(Env.ContentRootPath, "wwwroot", "images", "uploads");
+        validationMessageStore.Clear();
+
+        if (!editContext.Validate())
+        {
+            return;
+        }
+
+        if (selectedFile == null)
+        {
+            validationMessageStore.Add(
+                new FieldIdentifier(newDestination, nameof(newDestination.ImageUrl)),
+                "Please upload an image for the destination card.");
+            editContext.NotifyValidationStateChanged();
+            return;
+        }
+
+        var uploadFolder = Path.Combine(Env.WebRootPath, "images", "uploads");
         Directory.CreateDirectory(uploadFolder);
 
-        newDestination.ImageUrls.Clear();
+        var safeName = Path.GetFileNameWithoutExtension(selectedFile.Name);
+        var extension = Path.GetExtension(selectedFile.Name);
+        var uniqueFileName = $"{safeName}-{Guid.NewGuid()}{extension}";
+        var filePath = Path.Combine(uploadFolder, uniqueFileName);
 
-        foreach (var file in selectedFiles)
+        await using (var fileStream = File.Create(filePath))
         {
-            var safeName = Path.GetFileNameWithoutExtension(file.Name);
-            var extension = Path.GetExtension(file.Name);
-            var uniqueFileName = $"{safeName}-{Guid.NewGuid()}{extension}";
-            var filePath = Path.Combine(uploadFolder, uniqueFileName);
-
-            await using var fileStream = File.Create(filePath);
-            await file.OpenReadStream(maxAllowedSize: 10 * 1024 * 1024).CopyToAsync(fileStream);
-
-            newDestination.ImageUrls.Add($"/images/uploads/{uniqueFileName}");
+            await selectedFile.OpenReadStream(maxAllowedSize: 10 * 1024 * 1024).CopyToAsync(fileStream);
         }
+
+        newDestination.ImageUrl = $"/images/uploads/{uniqueFileName}";
 
         await DestinationService.AddDestinationAsync(newDestination);
         NavigationManager.NavigateTo("/destinations");
@@ -132,6 +150,7 @@
         NavigationManager.NavigateTo("/destinations");
     }
 }
+
 <style>
     .add-destination-page {
         max-width: 900px;
@@ -141,7 +160,6 @@
 
     .add-destination-page h1 {
         margin-bottom: 1.5rem;
-        color: #333;
     }
 
     .form-grid {
@@ -155,20 +173,11 @@
         gap: 0.5rem;
     }
 
-    .form-full-width {
-        grid-column: span 1;
-    }
-
     .input-field {
         padding: 0.85rem 1rem;
         font-size: 1rem;
-        border: 2px solid #ddd;
+        border: 1px solid #d7dce8;
         border-radius: 10px;
-    }
-
-    .input-field:focus {
-        outline: none;
-        border-color: #007bff;
     }
 
     .form-actions {
@@ -182,38 +191,28 @@
     .btn-secondary {
         border: none;
         padding: 0.95rem 1.6rem;
-        border-radius: 12px;
+        border-radius: 999px;
         cursor: pointer;
         font-size: 1rem;
-        font-weight: 600;
+        font-weight: 700;
     }
 
     .btn-primary {
-        background: #007bff;
+        background: linear-gradient(135deg, #2f6bff, #7b5cff);
         color: white;
     }
 
     .btn-secondary {
-        background: #f1f1f1;
-        color: #333;
+        background: #eef2ff;
+        color: #1e293b;
     }
 
-    .btn-primary:hover {
-        background: #0056b3;
-    }
-
-    .btn-secondary:hover {
-        background: #e2e2e2;
-    }
-
-    .selected-files ul {
-        padding-left: 1.2rem;
-        margin: 0.5rem 0 0;
-        color: #444;
+    .selected-files {
+        color: #546075;
     }
 
     .form-status {
-        color: #d9534f;
+        color: #b42318;
         font-weight: 600;
     }
 </style>

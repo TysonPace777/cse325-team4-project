@@ -179,6 +179,7 @@ h1:focus {
    Desktop: >= 1024px
    Tablet: 768px - 1023px
    Mobile: <= 767px
+    ===================================== */
 
 @media (min-width: 768px) and (max-width: 1023px) {
 
@@ -275,8 +276,8 @@ h1:focus {
     background-color: white;
 }
 
-*/
-* Destination Details */
+
+/* Destination Details */
 
     .details-page {
         max-width: 1100px;

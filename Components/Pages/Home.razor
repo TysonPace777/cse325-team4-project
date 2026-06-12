@@ -11,7 +11,7 @@
         <p class="username">Hello, @auth.User.Identity?.Name</p>
     </Authorized>
 </AuthorizeView>
-
+@*
 <h3 class="home-title">Go Anywhere!</h3>
 
 <div class="home-links">
@@ -20,17 +20,20 @@
     <a href="/Activities">Activities</a>
     <a href="/Calendar">Calendar</a>
     <a href="/Feedback">Feedback</a>
+*@
+<div class="home-auth-corner">
     <AuthorizeView>
         <Authorized Context="auth">
             <form method="post" action="/Account/Login?handler=Logout">
-                <button class="logout" type="submit">Logout</button>
+                <button class="home-auth-button" type="submit">Logout</button>
             </form>
         </Authorized>
         <NotAuthorized Context="auth">
-            <a href="/Signin">Sign In</a>
+            <a class="home-auth-button" href="/Signin">Sign In</a>
         </NotAuthorized>
     </AuthorizeView>
 </div>
+
 
 
 <h3 class="home-title">Where do you want to go?</h3>

@@ -253,3 +253,26 @@ h1:focus {
     border: none;
     background-color: white;
 }
+
+.signin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 5%;
+    width: 50%;
+    justify-self: center;
+}
+
+.signin-form button {
+    border-radius: 10px;
+    border: none;
+    padding: 5px;
+    background-color: #218838;
+    color: white;
+}
+
+.signin-form input {
+    border-radius: 5px;
+    border: 1px gray solid;
+    padding: 5px;
+}

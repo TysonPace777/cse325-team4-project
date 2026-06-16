@@ -510,7 +510,7 @@ h1:focus {
     }
 
     .btn-add {
-        background: #28a745;
+        background: #387D7A;
         color: white;
         border: none;
         border-radius: 12px;
@@ -556,7 +556,7 @@ h1:focus {
 
     .search-box input:focus {
         outline: none;
-        border-color: #007bff;
+        border-color: #395E66;
     }
 
     .category-filters {
@@ -576,14 +576,14 @@ h1:focus {
     }
 
     .filter-btn:hover {
-        border-color: #007bff;
-        color: #007bff;
+        border-color: #395E66;
+        color: #395E66;
     }
 
     .filter-btn.active {
-        background: #007bff;
+        background: #395E66;
         color: white;
-        border-color: #007bff;
+        border-color: #395E66;
     }
 
     .destinations-grid {
@@ -653,7 +653,7 @@ h1:focus {
         position: absolute;
         top: 10px;
         right: 10px;
-        background: #007bff;
+        background: #395E66;
         color: white;
         padding: 0.25rem 0.75rem;
         border-radius: 20px;
@@ -675,7 +675,7 @@ h1:focus {
     }
 
     .country {
-        color: #007bff;
+        color: #395E66;
         margin: 0 0 0.75rem 0;
         font-weight: 500;
     }
@@ -699,7 +699,7 @@ h1:focus {
     }
 
     .btn-explore {
-        background: #007bff;
+        background: #395E66;
         color: white;
         border: none;
         padding: 0.75rem 1.5rem;

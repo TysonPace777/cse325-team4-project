@@ -21,25 +21,16 @@
         if (Mode == "login") isLogin = true;
     }
 
-    private bool ValidateRegister()
+    private void ValidateRegister()
     {
-        if (!System.Text.RegularExpressions.Regex.IsMatch(regEmail, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
-        {
-            frontendError = "Please enter a valid email address.";
-            return false;
-        }
-        if (regPassword.Length < 6)
-        {
-            frontendError = "Password must be at least 6 characters.";
-            return false;
-        }
         if (regPassword != regConfirm)
         {
             frontendError = "Passwords do not match.";
-            return false;
         }
-        frontendError = "";
-        return true;
+        else
+        {
+            frontendError = string.Empty;
+        }
     }
 }
 
@@ -69,17 +60,19 @@ else if (!string.IsNullOrEmpty(Error))
 }
 else
 {
-    <form method="post" action="/Account/Login?handler=Register" class="signin-form"
-          @onsubmit="() => {}" @onsubmit:preventDefault="@(!ValidateRegister())">
+    <form method="post" action="/Account/Login?handler=Register" class="signin-form">
         <input type="hidden" name="__RequestVerificationToken" value="@token" />
         <input type="hidden" name="returnUrl" value="/" />
-        <input type="email" name="email" placeholder="Email" required
-               @bind="regEmail" @bind:event="onchange" />
-        <input type="password" name="password" placeholder="Password" required
-               @bind="regPassword" @bind:event="onchange" />
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="password" name="password" placeholder="Password" required minlength="6"
+            @oninput="e => regPassword = e.Value?.ToString() ?? string.Empty" />
         <input type="password" name="confirmPassword" placeholder="Confirm Password" required
-               @bind="regConfirm" @bind:event="onchange" />
-        <button type="submit">Register</button>
+            @oninput="e => regConfirm = e.Value?.ToString() ?? string.Empty" />
+        @if (!string.IsNullOrEmpty(frontendError))
+        {
+            <p style="color:red">@frontendError</p>
+        }
+        <button type="submit" @onclick="ValidateRegister">Register</button>
     </form>
     <button type="button" @onclick="() => { isLogin = true; frontendError = string.Empty; }">Already have an account?</button>
 }

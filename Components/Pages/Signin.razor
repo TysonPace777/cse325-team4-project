@@ -10,41 +10,69 @@
     [SupplyParameterFromQuery] public string? Mode { get; set; }
 
     private bool isLogin = false;
+    private string frontendError = "";
+
+    private string regEmail = "";
+    private string regPassword = "";
+    private string regConfirm = "";
 
     protected override void OnInitialized()
     {
-        // Stay on register/login tab if redirected back with an error
         if (Mode == "login") isLogin = true;
+    }
+
+    private void ValidateRegister()
+    {
+        if (regPassword != regConfirm)
+        {
+            frontendError = "Passwords do not match.";
+        }
+        else
+        {
+            frontendError = string.Empty;
+        }
     }
 }
 
-@if (!string.IsNullOrEmpty(Error))
+@{
+    var token = Antiforgery.GetAndStoreTokens(HttpContextAccessor.HttpContext!).RequestToken;
+}
+
+@if (!string.IsNullOrEmpty(frontendError))
+{
+    <p style="color:red">@frontendError</p>
+}
+else if (!string.IsNullOrEmpty(Error))
 {
     <p style="color:red">@Uri.UnescapeDataString(Error)</p>
 }
 
 @if (isLogin)
 {
-    <form method="post" action="/Account/Login?handler=Login">
-        <input type="hidden" name="__RequestVerificationToken" 
-            value="@Antiforgery.GetAndStoreTokens(HttpContextAccessor.HttpContext!).RequestToken" />
+    <form method="post" action="/Account/Login?handler=Login" class="signin-form">
+        <input type="hidden" name="__RequestVerificationToken" value="@token" />
         <input type="hidden" name="returnUrl" value="/" />
-        <input name="email" placeholder="Email" />
-        <input type="password" name="password" placeholder="Password" />
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="password" name="password" placeholder="Password" required />
         <button type="submit">Login</button>
     </form>
-    <a @onclick="() => isLogin = false" @onclick:preventDefault>Need an account?</a>
+    <button type="button" @onclick="() => { isLogin = false; frontendError = string.Empty; }">Need an account?</button>
 }
 else
 {
-    <form method="post" action="/Account/Login?handler=Register">
-        <input type="hidden" name="__RequestVerificationToken" 
-            value="@Antiforgery.GetAndStoreTokens(HttpContextAccessor.HttpContext!).RequestToken" />
+    <form method="post" action="/Account/Login?handler=Register" class="signin-form">
+        <input type="hidden" name="__RequestVerificationToken" value="@token" />
         <input type="hidden" name="returnUrl" value="/" />
-        <input name="email" placeholder="Email" />
-        <input type="password" name="password" placeholder="Password" />
-        <input type="password" name="confirmPassword" placeholder="Confirm Password" />
-        <button type="submit">Register</button>
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="password" name="password" placeholder="Password" required minlength="6"
+            @oninput="e => regPassword = e.Value?.ToString() ?? string.Empty" />
+        <input type="password" name="confirmPassword" placeholder="Confirm Password" required
+            @oninput="e => regConfirm = e.Value?.ToString() ?? string.Empty" />
+        @if (!string.IsNullOrEmpty(frontendError))
+        {
+            <p style="color:red">@frontendError</p>
+        }
+        <button type="submit" @onclick="ValidateRegister">Register</button>
     </form>
-    <a @onclick="() => isLogin = true" @onclick:preventDefault>Already have an account?</a>
+    <button type="button" @onclick="() => { isLogin = true; frontendError = string.Empty; }">Already have an account?</button>
 }

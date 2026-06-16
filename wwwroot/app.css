@@ -776,3 +776,70 @@ h1:focus {
     background: #218838;
     color: white !important;
 }
+
+/* Activities Contact Section */
+.activities-contact-section {
+    margin: 3rem 0 2rem;
+    text-align: center;
+}
+
+.activities-contact-subtitle {
+    color: #555;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.activities-contact-box {
+    background: #e8f5f0;
+    border: 1px solid #9FE1CB;
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.activities-contact-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.activities-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.15s;
+}
+
+.activities-btn-solid {
+    background: #0F6E56;
+    color: #fff;
+    border: none;
+}
+
+.activities-btn-solid:hover {
+    background: #085041;
+}
+
+.activities-btn-outline {
+    background: transparent;
+    color: #0F6E56;
+    border: 1px solid #0F6E56;
+}
+
+.activities-btn-outline:hover {
+    background: #e8f5f0;
+}
+
+.activities-contact-note {
+    font-size: 0.8rem;
+    color: #0F6E56;
+    margin: 0;
+}

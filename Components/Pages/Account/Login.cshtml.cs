@@ -68,4 +68,39 @@ public class LoginModel : PageModel
         await _signInManager.SignOutAsync();
         return Redirect("/Signin");
     }
+
+    public async Task<IActionResult> OnPostDeleteAccountAsync()
+    {
+        var user = await _userManager.GetUserAsync(User);
+        if (user != null)
+        {
+            await _signInManager.SignOutAsync();
+            await _userManager.DeleteAsync(user);
+        }
+        return Redirect("/Signin");
+    }
+
+    public async Task<IActionResult> OnPostChangePasswordAsync(
+        string currentPassword, string newPassword, string confirmNewPassword)
+    {
+        var user = await _userManager.GetUserAsync(User);
+        if (user == null)
+            return Redirect("/Signin");
+
+        if (newPassword != confirmNewPassword)
+        {
+            var error = Uri.EscapeDataString("New passwords do not match.");
+            return Redirect($"/Signin?error={error}");
+        }
+
+        var result = await _userManager.ChangePasswordAsync(user, currentPassword, newPassword);
+        if (result.Succeeded)
+        {
+            await _signInManager.RefreshSignInAsync(user);
+            return Redirect("/?message=Password changed successfully.");
+        }
+
+        var errors = string.Join(", ", result.Errors.Select(e => e.Description));
+        return Redirect($"/Signin?error={Uri.EscapeDataString(errors)}");
+    }
 }

@@ -1,4 +1,5 @@
 ﻿@inherits LayoutComponentBase
+@using Microsoft.AspNetCore.Components.Authorization
 
 <div class="page">
     <div class="sidebar">
@@ -36,8 +37,17 @@
                     <p>Available 24/7</p>
                 </div>
             </div>
+
             <div class="footer-bottom">
                 © @DateTime.Now.Year Travel Assistance - All Rights Reserved
+            </div>
+
+            <div class="account-update-delete">
+                <AuthorizeView>
+                    <Authorized>
+                        <AccountFooter />
+                    </Authorized>
+                </AuthorizeView>
             </div>
         </footer>
     </main>

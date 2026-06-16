@@ -843,3 +843,26 @@ h1:focus {
     color: #0F6E56;
     margin: 0;
 }
+
+.account-update-delete {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    width: 200px;
+}
+
+.password-form {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.password-form input{
+    margin: 5px;
+}
+
+.password-form button {
+    border-radius: 5px;
+    margin: 3px;
+}

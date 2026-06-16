@@ -1,0 +1,26 @@
+@rendermode InteractiveServer
+
+<form method="post" action="/Account/Login?handler=DeleteAccount"
+      onsubmit="return confirm('Are you sure you want to delete your account? This cannot be undone.')">
+    <button type="submit" class="btn btn-danger btn-sm" style="width: 100%;">Delete Account</button>
+</form>
+
+<button type="button" class="btn btn-secondary btn-sm"
+        @onclick="() => showChangePassword = !showChangePassword" style="width: 100%;">
+    Change Password
+</button>
+
+@if (showChangePassword)
+{
+    <form method="post" action="/Account/Login?handler=ChangePassword" class="password-form">
+        <input type="password" name="currentPassword" placeholder="Current Password" required />
+        <input type="password" name="newPassword" placeholder="New Password" required minlength="6" />
+        <input type="password" name="confirmNewPassword" placeholder="Confirm New Password" required />
+        <button type="submit">Update Password</button>
+    </form>
+}
+
+@code {
+    private bool showChangePassword = false;
+}
+

@@ -29,8 +29,27 @@ public class LoginModel : PageModel
     }
 
     public async Task<IActionResult> OnPostRegisterAsync(
-        string email, string password, string returnUrl = "/")
+        string email, string password, string confirmPassword, string returnUrl = "/")
     {
+        // Backend validation
+        if (string.IsNullOrWhiteSpace(email) || !email.Contains('@') || !email.Contains('.'))
+        {
+            var error = Uri.EscapeDataString("Please enter a valid email address.");
+            return Redirect($"/Signin?error={error}&mode=register");
+        }
+
+        if (string.IsNullOrWhiteSpace(password) || password.Length < 6)
+        {
+            var error = Uri.EscapeDataString("Password must be at least 6 characters.");
+            return Redirect($"/Signin?error={error}&mode=register");
+        }
+
+        if (password != confirmPassword)
+        {
+            var error = Uri.EscapeDataString("Passwords do not match.");
+            return Redirect($"/Signin?error={error}&mode=register");
+        }
+
         var user = new ApplicationUser { UserName = email, Email = email };
         var result = await _userManager.CreateAsync(user, password);
 
@@ -40,7 +59,7 @@ public class LoginModel : PageModel
             return LocalRedirect(returnUrl);
         }
 
-        var errors = string.Join("|", result.Errors.Select(e => e.Description));
+        var errors = string.Join(", ", result.Errors.Select(e => e.Description));
         return Redirect($"/Signin?error={Uri.EscapeDataString(errors)}&mode=register");
     }
 
